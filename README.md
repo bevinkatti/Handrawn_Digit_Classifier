@@ -24,4 +24,6 @@ Accuracy: 99% on MNIST test set
 Architecture: CNN with Conv2D, MaxPooling, Dense layers
 Dataset: 70,000 handwritten digits -MNIST TensorFLow
 
-**TensorFlow Learning Project** - End-to-end ML pipeline from model training to web deployment.
+**TensorFlow Learning Project** - End-to-end ML pipeline from model training to web deployment.   
+  
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
