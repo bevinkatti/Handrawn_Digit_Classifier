@@ -1,0 +1,6 @@
+﻿tensorflow>=2.8.0
+flask>=2.0.0
+pillow>=8.0.0
+numpy>=1.21.0
+matplotlib>=3.3.0
+gunicorn>=20.0.0

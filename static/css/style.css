@@ -1,0 +1,267 @@
+/* static/css/style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px;
+}
+
+.canvas-container {
+    border: 3px solid #3498db;
+    border-radius: 10px;
+    padding: 15px;
+    background: #f8f9fa;
+    margin-bottom: 20px;
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+#drawingCanvas {
+    border: 2px solid #26333c;
+    border-radius: 8px;
+    background: white;
+    cursor: crosshair;
+    display: block;
+    transition: border-color 0.3s ease;
+}
+
+#drawingCanvas:hover {
+    border-color: #3498db;
+}
+
+#drawingCanvas:active {
+    cursor: grabbing;
+}
+
+/* Improve button feedback */
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Add smooth transitions */
+.probability-fill {
+    transition: width 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.drawing-section {
+    text-align: center;
+}
+
+.canvas-container {
+    border: 3px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+#drawingCanvas {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: white;
+    cursor: crosshair;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(52, 152, 219, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+    color: white;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(149, 165, 166, 0.3);
+}
+
+.results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.prediction-result {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.prediction-header {
+    font-size: 1.2em;
+    color: #6c757d;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.predicted-digit {
+    font-size: 4em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 10px 0;
+}
+
+.confidence {
+    font-size: 1.1em;
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.probabilities {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.probabilities h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.probability-bar {
+    margin-bottom: 15px;
+}
+
+.probability-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.digit {
+    color: #2c3e50;
+}
+
+.probability-value {
+    color: #3498db;
+}
+
+.probability-track {
+    height: 10px;
+    background: #ecf0f1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.probability-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+    border-radius: 5px;
+    transition: width 0.5s ease;
+}
+
+.info-section {
+    background: #f8f9fa;
+    padding: 40px;
+    border-top: 1px solid #e9ecef;
+}
+
+.info-section h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.info-section p {
+    color: #6c757d;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-tag {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}

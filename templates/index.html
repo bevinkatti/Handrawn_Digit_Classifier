@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNIST Digit Classifier</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Handwritten Digit Classifier</h1>
+            <p>Draw a digit (0-9) in the canvas below and see the AI prediction!</p>
+        </header>
+
+        <div class="main-content">
+            <div class="drawing-section">
+                <div class="canvas-container">
+                    <canvas id="drawingCanvas" width="280" height="280"></canvas>
+                </div>
+                <div class="controls">
+                    <button id="predictBtn" class="btn btn-primary">Predict Digit</button>
+                    <button id="clearBtn" class="btn btn-secondary">Clear Canvas</button>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div id="predictionResult" class="prediction-result">
+                    <div class="prediction-header">Prediction</div>
+                    <div id="predictedDigit" class="predicted-digit">-</div>
+                    <div id="confidence" class="confidence">Confidence: -</div>
+                </div>
+
+                <div class="probabilities">
+                    <h3>Probabilities</h3>
+                    <div id="probabilityBars" class="probability-bars">
+                        <!-- Probability bars will be generated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>About this Project</h3>
+            <p>This application uses a Convolutional Neural Network (CNN) trained on the MNIST dataset to recognize handwritten digits. The model was built with TensorFlow/Keras and achieves over 99% accuracy on test data.</p>
+            <div class="tech-stack">
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">Keras</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">CNN</span>
+                <span class="tech-tag">MNIST</span>
+            </div>
+        </div>
+    </div>
+    <script>
+// Simple canvas drawing as fallback
+const canvas = document.getElementById('drawingCanvas');
+const ctx = canvas.getContext('2d');
+let isDrawing = false;
+
+// Set canvas style
+ctx.fillStyle = 'white';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.lineWidth = 15;
+ctx.lineCap = 'round';
+ctx.strokeStyle = 'black';
+
+// Drawing functions
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', stopDrawing);
+canvas.addEventListener('mouseout', stopDrawing);
+
+function startDrawing(e) {
+    isDrawing = true;
+    draw(e);
+}
+
+function draw(e) {
+    if (!isDrawing) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    ctx.lineTo(x, y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+}
+
+function stopDrawing() {
+    isDrawing = false;
+    ctx.beginPath();
+}
+
+// Clear canvas
+document.getElementById('clearBtn').addEventListener('click', function() {
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+});
+
+console.log('Simple drawing initialized');
+</script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
